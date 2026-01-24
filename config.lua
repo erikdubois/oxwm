@@ -318,3 +318,6 @@ oxwm.key.chord({
 -- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg") 
 -- oxwm.autostart("dunst")
 -- oxwm.autostart("nm-applet")
+oxwm.autostart("variety -n")
+oxwm.autostart("numlockx")
+oxwm.autostart("fastcompmgr -c")
