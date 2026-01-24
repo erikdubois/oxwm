@@ -287,9 +287,9 @@ oxwm.key.bind({ modkey, "Control" }, "9", oxwm.tag.toggleview(8))
 
 -- Multi tag (window on multiple tags)
 -- Example: Mod+Ctrl+Shift+2 puts focused window on BOTH current tag and tag 2
-oxwm.key.bind({ modkey, "Control", "Shift" }, "Ampersand", oxwm.tag.toggletag(0))
-oxwm.key.bind({ modkey, "Control", "Shift" }, "Eacute", oxwm.tag.toggletag(1))
-oxwm.key.bind({ modkey, "Control", "Shift" }, "Quotedbl", oxwm.tag.toggletag(2))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "XK_AMPERSAND", oxwm.tag.toggletag(0))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "XK_EACUTE", oxwm.tag.toggletag(1))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "XK_QUOTEDBL", oxwm.tag.toggletag(2))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "4", oxwm.tag.toggletag(3))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "5", oxwm.tag.toggletag(4))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "6", oxwm.tag.toggletag(5))
