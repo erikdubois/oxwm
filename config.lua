@@ -46,7 +46,7 @@ local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 -- local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
 
 -- Font for the status bar (use "fc-list" to see available fonts)
-local bar_font = "monospace:style=Bold:size=10"
+local bar_font = "monospace:style=Bold:size=14"
 
 -- Define your blocks
 -- Similar to widgets in qtile, or dwmblocks
@@ -143,7 +143,7 @@ oxwm.gaps.set_outer(5, 5)
 -- - Configure window behavior based on title or class
 
 -- Examples (uncomment to use):
-oxwm.rule.add({ instance = "gimp", floating = true })                             
+-- oxwm.rule.add({ instance = "gimp", floating = true })                             
 -- oxwm.rule.add({ class = "Alacritty", tag = 9, focus = true })                             
 -- oxwm.rule.add({ class = "firefox", title = "Library", floating = true })  
 -- oxwm.rule.add({ class = "firefox", tag = 2 })  
@@ -191,7 +191,12 @@ oxwm.bar.set_scheme_urgent(colors.red, colors.bg, colors.red)
 
 oxwm.key.bind({ modkey }, "Return", oxwm.spawn_terminal())
 -- Launch Dmenu
-oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "dmenu_run -l 10" }))
+oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'" }))
+-- Launch Rofi
+oxwm.key.bind({ modkey, "Shift" }, "D", oxwm.spawn({ "sh", "-c", "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi }))
+-- Launch Thunar
+oxwm.key.bind({ modkey, "Shift" }, "Return", oxwm.spawn({ "thunar" }))
+
 -- Copy screenshot to clipboard
 oxwm.key.bind({ modkey }, "S", oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" }))
 oxwm.key.bind({ modkey }, "Q", oxwm.client.kill()) 
@@ -223,6 +228,9 @@ oxwm.key.bind({ modkey }, "A", oxwm.toggle_gaps())
 
 -- Window manager controls
 oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.quit())
+oxwm.key.bind({ modkey }, "X", oxwm.spawn({ "archlinux-logout" }))
+oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.spawn({ "archlinux-logout" }))
+oxwm.key.bind({ modkey, "Control" }, "Q", oxwm.quit())
 oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 
 -- Focus movement [1 for up in the stack, -1 for down]
@@ -244,9 +252,9 @@ oxwm.key.bind({ modkey, "Shift" }, "Period", oxwm.monitor.tag(1))
 
 -- Workspace (tag) navigation
 -- Switch to workspace N (tags are 0-indexed, so tag "1" is index 0)
-oxwm.key.bind({ modkey }, "1", oxwm.tag.view(0))
-oxwm.key.bind({ modkey }, "2", oxwm.tag.view(1))
-oxwm.key.bind({ modkey }, "3", oxwm.tag.view(2))
+oxwm.key.bind({ modkey }, "Ampersand", oxwm.tag.view(0))
+oxwm.key.bind({ modkey }, "Eacute", oxwm.tag.view(1))
+oxwm.key.bind({ modkey }, "Quotedbl", oxwm.tag.view(2))
 oxwm.key.bind({ modkey }, "4", oxwm.tag.view(3))
 oxwm.key.bind({ modkey }, "5", oxwm.tag.view(4))
 oxwm.key.bind({ modkey }, "6", oxwm.tag.view(5))
@@ -255,9 +263,9 @@ oxwm.key.bind({ modkey }, "8", oxwm.tag.view(7))
 oxwm.key.bind({ modkey }, "9", oxwm.tag.view(8))
 
 -- Move focused window to workspace N
-oxwm.key.bind({ modkey, "Shift" }, "1", oxwm.tag.move_to(0))
-oxwm.key.bind({ modkey, "Shift" }, "2", oxwm.tag.move_to(1))
-oxwm.key.bind({ modkey, "Shift" }, "3", oxwm.tag.move_to(2))
+oxwm.key.bind({ modkey, "Shift" }, "Ampersand", oxwm.tag.move_to(0))
+oxwm.key.bind({ modkey, "Shift" }, "Eacute", oxwm.tag.move_to(1))
+oxwm.key.bind({ modkey, "Shift" }, "Quotedbl", oxwm.tag.move_to(2))
 oxwm.key.bind({ modkey, "Shift" }, "4", oxwm.tag.move_to(3))
 oxwm.key.bind({ modkey, "Shift" }, "5", oxwm.tag.move_to(4))
 oxwm.key.bind({ modkey, "Shift" }, "6", oxwm.tag.move_to(5))
@@ -267,9 +275,9 @@ oxwm.key.bind({ modkey, "Shift" }, "9", oxwm.tag.move_to(8))
 
 -- Combo view (view multiple tags at once) {argos_nothing}
 -- Example: Mod+Ctrl+2 while on tag 1 will show BOTH tags 1 and 2
-oxwm.key.bind({ modkey, "Control" }, "1", oxwm.tag.toggleview(0))
-oxwm.key.bind({ modkey, "Control" }, "2", oxwm.tag.toggleview(1))
-oxwm.key.bind({ modkey, "Control" }, "3", oxwm.tag.toggleview(2))
+oxwm.key.bind({ modkey, "Control" }, "Ampersand", oxwm.tag.toggleview(0))
+oxwm.key.bind({ modkey, "Control" }, "Eacute", oxwm.tag.toggleview(1))
+oxwm.key.bind({ modkey, "Control" }, "Quotedbl", oxwm.tag.toggleview(2))
 oxwm.key.bind({ modkey, "Control" }, "4", oxwm.tag.toggleview(3))
 oxwm.key.bind({ modkey, "Control" }, "5", oxwm.tag.toggleview(4))
 oxwm.key.bind({ modkey, "Control" }, "6", oxwm.tag.toggleview(5))
@@ -279,9 +287,9 @@ oxwm.key.bind({ modkey, "Control" }, "9", oxwm.tag.toggleview(8))
 
 -- Multi tag (window on multiple tags)
 -- Example: Mod+Ctrl+Shift+2 puts focused window on BOTH current tag and tag 2
-oxwm.key.bind({ modkey, "Control", "Shift" }, "1", oxwm.tag.toggletag(0))
-oxwm.key.bind({ modkey, "Control", "Shift" }, "2", oxwm.tag.toggletag(1))
-oxwm.key.bind({ modkey, "Control", "Shift" }, "3", oxwm.tag.toggletag(2))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "Ampersand", oxwm.tag.toggletag(0))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "Eacute", oxwm.tag.toggletag(1))
+oxwm.key.bind({ modkey, "Control", "Shift" }, "Quotedbl", oxwm.tag.toggletag(2))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "4", oxwm.tag.toggletag(3))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "5", oxwm.tag.toggletag(4))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "6", oxwm.tag.toggletag(5))
