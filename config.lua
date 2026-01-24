@@ -252,9 +252,9 @@ oxwm.key.bind({ modkey, "Shift" }, "Period", oxwm.monitor.tag(1))
 
 -- Workspace (tag) navigation
 -- Switch to workspace N (tags are 0-indexed, so tag "1" is index 0)
-oxwm.key.bind({ modkey }, "Ampersand", oxwm.tag.view(0))
-oxwm.key.bind({ modkey }, "Eacute", oxwm.tag.view(1))
-oxwm.key.bind({ modkey }, "Quotedbl", oxwm.tag.view(2))
+oxwm.key.bind({ modkey }, "XK_Ampersand", oxwm.tag.view(0))
+oxwm.key.bind({ modkey }, "XK_Eacute", oxwm.tag.view(1))
+oxwm.key.bind({ modkey }, "XK_Quotedbl", oxwm.tag.view(2))
 oxwm.key.bind({ modkey }, "4", oxwm.tag.view(3))
 oxwm.key.bind({ modkey }, "5", oxwm.tag.view(4))
 oxwm.key.bind({ modkey }, "6", oxwm.tag.view(5))
@@ -263,9 +263,9 @@ oxwm.key.bind({ modkey }, "8", oxwm.tag.view(7))
 oxwm.key.bind({ modkey }, "9", oxwm.tag.view(8))
 
 -- Move focused window to workspace N
-oxwm.key.bind({ modkey, "Shift" }, "Ampersand", oxwm.tag.move_to(0))
-oxwm.key.bind({ modkey, "Shift" }, "Eacute", oxwm.tag.move_to(1))
-oxwm.key.bind({ modkey, "Shift" }, "Quotedbl", oxwm.tag.move_to(2))
+oxwm.key.bind({ modkey, "Shift" }, "XK_Ampersand", oxwm.tag.move_to(0))
+oxwm.key.bind({ modkey, "Shift" }, "XK_Eacute", oxwm.tag.move_to(1))
+oxwm.key.bind({ modkey, "Shift" }, "XK_Quotedbl", oxwm.tag.move_to(2))
 oxwm.key.bind({ modkey, "Shift" }, "4", oxwm.tag.move_to(3))
 oxwm.key.bind({ modkey, "Shift" }, "5", oxwm.tag.move_to(4))
 oxwm.key.bind({ modkey, "Shift" }, "6", oxwm.tag.move_to(5))
@@ -275,9 +275,9 @@ oxwm.key.bind({ modkey, "Shift" }, "9", oxwm.tag.move_to(8))
 
 -- Combo view (view multiple tags at once) {argos_nothing}
 -- Example: Mod+Ctrl+2 while on tag 1 will show BOTH tags 1 and 2
-oxwm.key.bind({ modkey, "Control" }, "Ampersand", oxwm.tag.toggleview(0))
-oxwm.key.bind({ modkey, "Control" }, "Eacute", oxwm.tag.toggleview(1))
-oxwm.key.bind({ modkey, "Control" }, "Quotedbl", oxwm.tag.toggleview(2))
+oxwm.key.bind({ modkey, "Control" }, "XK_Ampersand", oxwm.tag.toggleview(0))
+oxwm.key.bind({ modkey, "Control" }, "XK_Eacute", oxwm.tag.toggleview(1))
+oxwm.key.bind({ modkey, "Control" }, "XK_Quotedbl", oxwm.tag.toggleview(2))
 oxwm.key.bind({ modkey, "Control" }, "4", oxwm.tag.toggleview(3))
 oxwm.key.bind({ modkey, "Control" }, "5", oxwm.tag.toggleview(4))
 oxwm.key.bind({ modkey, "Control" }, "6", oxwm.tag.toggleview(5))
