@@ -39,6 +39,10 @@ set -uo pipefail  # Do not use set -e, we want to continue on error
 
 workdir=$(pwd)
 
+wget "https://raw.githubusercontent.com/tonybanters/oxwm/refs/heads/master/templates/config.lua" -O ->> $workdir/config-original.lua
+
+
+
 # Below command will backup everything inside the project folder
 git add --all .
 
