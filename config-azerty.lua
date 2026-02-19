@@ -1,4 +1,4 @@
----@meta
+---@meta 2026 02 19 commit 3205bfc
 -------------------------------------------------------------------------------
 -- OXWM Configuration File
 -------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ local modkey = "Mod4"
 local terminal = "alacritty"
 
 -- Color palette - customize these to match your theme
--- Alternatively you can import other files in here, such as 
+-- Alternatively you can import other files in here, such as
 -- local colors = require("colors.lua") and make colors.lua a file
 -- in the ~/.config/oxwm directory
 local colors = {
@@ -58,7 +58,7 @@ local blocks = {
         underline = true,
     }),
     oxwm.bar.block.static({
-        text = " │  ",
+        text = "│",
         interval = 999999999,
         color = colors.lavender,
         underline = false,
@@ -71,7 +71,7 @@ local blocks = {
         underline = true,
     }),
     oxwm.bar.block.static({
-        text = " │  ",
+        text = "│",
         interval = 999999999,
         color = colors.lavender,
         underline = false,
@@ -84,15 +84,15 @@ local blocks = {
         underline = true,
     }),
     -- Uncomment to add battery status (useful for laptops)
-    -- oxwm.bar.block.battery({
-    --     format = "Bat: {}%",
-    --     charging = "⚡ Bat: {}%",
-    --     discharging = "- Bat: {}%",
-    --     full = "✓ Bat: {}%",
-    --     interval = 30,
-    --     color = colors.green,
-    --     underline = true,
-    -- }),
+    oxwm.bar.block.battery({
+        format = "Bat: {}%",
+        charging = "⚡ Bat: {}%",
+        discharging = "- Bat: {}%",
+        full = "✓ Bat: {}%",
+        interval = 30,
+        color = colors.green,
+        underline = true,
+    }),
 };
 
 -------------------------------------------------------------------------------
@@ -143,11 +143,11 @@ oxwm.gaps.set_outer(5, 5)
 -- - Configure window behavior based on title or class
 
 -- Examples (uncomment to use):
--- oxwm.rule.add({ instance = "gimp", floating = true })                             
--- oxwm.rule.add({ class = "Alacritty", tag = 9, focus = true })                             
--- oxwm.rule.add({ class = "firefox", title = "Library", floating = true })  
--- oxwm.rule.add({ class = "firefox", tag = 2 })  
--- oxwm.rule.add({ instance = "mpv", floating = true })                      
+-- oxwm.rule.add({ instance = "gimp", floating = true })
+-- oxwm.rule.add({ class = "Alacritty", tag = 9, focus = true })
+-- oxwm.rule.add({ class = "firefox", title = "Library", floating = true })
+-- oxwm.rule.add({ class = "firefox", tag = 2 })
+-- oxwm.rule.add({ instance = "mpv", floating = true })
 
 -- To find window properties, use xprop and click on the window
 -- WM_CLASS(STRING) shows both instance and class (instance, class)
@@ -192,14 +192,9 @@ oxwm.bar.set_scheme_urgent(colors.red, colors.bg, colors.red)
 oxwm.key.bind({ modkey }, "Return", oxwm.spawn_terminal())
 -- Launch Dmenu
 oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'" }))
--- Launch Rofi
-oxwm.key.bind({ modkey, "Shift" }, "D", oxwm.spawn({ "sh", "-c", "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi" }))
--- Launch Thunar
-oxwm.key.bind({ modkey, "Shift" }, "Return", oxwm.spawn({ "thunar" }))
-
 -- Copy screenshot to clipboard
 oxwm.key.bind({ modkey }, "S", oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" }))
-oxwm.key.bind({ modkey }, "Q", oxwm.client.kill()) 
+oxwm.key.bind({ modkey }, "Q", oxwm.client.kill())
 
 -- Keybind overlay - Shows important keybindings on screen
 oxwm.key.bind({ modkey, "Shift" }, "Slash", oxwm.show_keybinds())
@@ -228,9 +223,6 @@ oxwm.key.bind({ modkey }, "A", oxwm.toggle_gaps())
 
 -- Window manager controls
 oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.quit())
-oxwm.key.bind({ modkey }, "X", oxwm.spawn({ "archlinux-logout" }))
-oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.spawn({ "archlinux-logout" }))
-oxwm.key.bind({ modkey, "Control" }, "Q", oxwm.quit())
 oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 
 -- Focus movement [1 for up in the stack, -1 for down]
@@ -297,6 +289,17 @@ oxwm.key.bind({ modkey, "Control", "Shift" }, "7", oxwm.tag.toggletag(6))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "8", oxwm.tag.toggletag(7))
 oxwm.key.bind({ modkey, "Control", "Shift" }, "9", oxwm.tag.toggletag(8))
 
+-- Personal keybindings
+-- Log out - exit
+oxwm.key.bind({ modkey }, "X", oxwm.spawn({ "archlinux-logout" }))
+oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.spawn({ "archlinux-logout" }))
+oxwm.key.bind({ modkey, "Control" }, "Q", oxwm.quit())
+
+-- Launch Rofi
+oxwm.key.bind({ modkey, "Shift" }, "D", oxwm.spawn({ "sh", "-c", "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi" }))
+-- Launch Thunar
+oxwm.key.bind({ modkey, "Shift" }, "Return", oxwm.spawn({ "thunar" }))
+
 -------------------------------------------------------------------------------
 -- Advanced: Keychords
 -------------------------------------------------------------------------------
@@ -314,10 +317,11 @@ oxwm.key.chord({
 -- Commands to run once when OXWM starts
 -- Uncomment and modify these examples, or add your own
 
--- oxwm.autostart("picom")                                  
--- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg") 
+-- oxwm.autostart("picom")
+-- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg")
 -- oxwm.autostart("dunst")
 -- oxwm.autostart("nm-applet")
+
 oxwm.autostart("variety -n")
 oxwm.autostart("numlockx")
 oxwm.autostart("fastcompmgr -c")
