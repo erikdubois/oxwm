@@ -299,6 +299,9 @@ oxwm.key.bind({ modkey, "Control" }, "Q", oxwm.quit())
 oxwm.key.bind({ modkey, "Shift" }, "D", oxwm.spawn({ "sh", "-c", "rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi" }))
 -- Launch Thunar
 oxwm.key.bind({ modkey, "Shift" }, "Return", oxwm.spawn({ "thunar" }))
+-- Launch terminal
+oxwm.key.bind({ "Control","Mod1" }, "Return", oxwm.spawn_terminal())
+oxwm.key.bind({ modkey }, "T", oxwm.spawn_terminal())
 
 -------------------------------------------------------------------------------
 -- Advanced: Keychords
